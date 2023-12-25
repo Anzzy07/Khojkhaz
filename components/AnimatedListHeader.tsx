@@ -16,11 +16,16 @@ import { Text, Button, Divider } from "@ui-kitten/components";
 import { Row } from "./Row";
 import { HeaderInput } from "./HeaderInput";
 import { HeaderFilterButtons } from "./HeaderFilterButtons";
+import { HeaderLogistics } from "./HeaderLogistics";
 
 export const AnimatedListHeader = ({
   scrollAnimation,
+  mapShown,
+  setMapShown,
 }: {
   scrollAnimation: Animated.Value;
+  mapShown: boolean;
+  setMapShown: (bool: boolean) => void;
 }) => {
   const [offsetAnimation] = useState(new Animated.Value(0));
   const [clampedScroll, setClampedScroll] = useState(
@@ -76,78 +81,8 @@ export const AnimatedListHeader = ({
         <HeaderInput />
         <HeaderFilterButtons />
       </View>
-      <Divider style={{ backgroundColor: Theme["color-gray"] }} />
-      <Row
-        style={{
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginHorizontal: LISTMARGIN,
-          marginVertical: 5,
-        }}
-      >
-        <Row>
-          <MaterialCommunityIcons
-            name="map-marker"
-            size={18}
-            color={Theme["color-primary-500"]}
-          />
-          <Text category={"c1"} appearance={"hint"}>
-            15 Available
-          </Text>
-          <TouchableOpacity onPress={() => console.log("save")}>
-            <Text
-              category={"c1"}
-              style={{
-                color: Theme["color-info-300"],
-                fontWeight: "bold",
-                marginLeft: 10,
-              }}
-            >
-              Save
-            </Text>
-          </TouchableOpacity>
-        </Row>
-        <Row>
-          <TouchableOpacity onPress={() => console.log("sort")}>
-            <Row style={{ alignItems: "center" }}>
-              <MaterialCommunityIcons
-                name="sort"
-                color={Theme["color-info-300"]}
-                size={18}
-              />
-              <Text
-                category={"c1"}
-                style={{
-                  color: Theme["color-info-300"],
-                  fontWeight: "bold",
-                  marginLeft: 5,
-                }}
-              >
-                Sort
-              </Text>
-            </Row>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log("map")}>
-            <Row style={{ alignItems: "center", marginLeft: 20 }}>
-              <MaterialCommunityIcons
-                name="map-outline"
-                color={Theme["color-info-300"]}
-                size={18}
-              />
-              <Text
-                category={"c1"}
-                style={{
-                  color: Theme["color-info-300"],
-                  fontWeight: "bold",
-                  marginLeft: 10,
-                }}
-              >
-                Map
-              </Text>
-            </Row>
-          </TouchableOpacity>
-        </Row>
-      </Row>
+      <Divider style={styles.divider} />
+      <HeaderLogistics setMapShown={setMapShown} mapShown={mapShown} />
     </Animated.View>
   );
 };
@@ -164,5 +99,8 @@ const styles = StyleSheet.create({
   },
   defaultMarginHorizontol: {
     marginHorizontal: LISTMARGIN,
+  },
+  divider: {
+    backgroundColor: Theme["color-gray"],
   },
 });
