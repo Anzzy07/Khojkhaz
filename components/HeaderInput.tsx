@@ -24,7 +24,7 @@ export const HeaderInput = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Platform.OS === "ios" ? 50 : 10,
+    marginTop: Platform.OS === "android" ? 50 : 30, //Search screen manage
     borderWidth: 1,
     borderColor: "#d3d3d3",
     borderRadius: 30,

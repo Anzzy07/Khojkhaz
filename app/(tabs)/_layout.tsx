@@ -1,8 +1,6 @@
 import React from "react";
 import { Tabs } from "expo-router";
-import Colors from "../../constants/Colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { Theme } from "../../theme";
 
@@ -16,6 +14,7 @@ const Layout = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="search" color={color} size={size} />
           ),
+          headerShown: false,
         }}
       />
       <Tabs.Screen
