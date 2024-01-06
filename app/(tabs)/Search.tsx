@@ -2,10 +2,10 @@ import { Animated, View } from "react-native";
 import { useState } from "react";
 import MapView from "react-native-maps";
 import { Screen } from "components/Screen";
-import { properties } from "data/properties";
+import { properties } from "../../data/properties";
 
 import { Card } from "../../components/Card";
-import { LISTMARGIN, HEADERHEIGHT } from "../../constants";
+import { HEADERHEIGHT } from "../../constants";
 import { AnimatedListHeader } from "components/AnimatedListHeader";
 import { Map } from "components/Map";
 
@@ -42,7 +42,6 @@ const Search = () => {
           data={properties}
           keyExtractor={(item) => item.id.toString()}
           showsVerticalScrollIndicator={false}
-          style={{ marginHorizontal: LISTMARGIN }}
           renderItem={({ item }) => (
             <Card style={{ marginVertical: 5 }} property={item} />
           )}

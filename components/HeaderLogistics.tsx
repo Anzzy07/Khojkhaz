@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Row } from "./Row";
 import { LISTMARGIN } from "../constants";
 import { Theme } from "theme";
+import { useNavigation } from "@react-navigation/native";
 
 const HeaderLogisticsButton = ({
   label,
@@ -41,7 +42,10 @@ export const HeaderLogistics = ({
   mapShown: boolean;
   setMapShown: (bool: boolean) => void;
 }) => {
+  const navigation = useNavigation();
+
   const handleMapPress = () => {
+    navigation.setOptions({ tabBarStyle: { display: "flex" } });
     if (mapShown) return setMapShown(false);
     setMapShown(true);
   };
